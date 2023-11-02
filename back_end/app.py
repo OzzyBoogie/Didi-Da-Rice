@@ -1,6 +1,8 @@
 from flask import Flask
+from flask_cors import CORS
 
 app = Flask(__name__)
+cors = CORS(app)
 
 
 @app.route('/')
@@ -10,7 +12,7 @@ def hello_world():  # put application's code here
 
 @app.route('/1')
 def hello():  # put application's code here
-    return 'Hello World!'
+    return 'Hello 1!'
 
 
 if __name__ == '__main__':
