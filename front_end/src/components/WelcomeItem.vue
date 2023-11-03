@@ -1,18 +1,32 @@
 <template>
-  <div class="item">
-    <i>
-      <slot name="icon"></slot>
-    </i>
-    <div class="details">
-      <h3>
-        <slot name="heading"></slot>
-      </h3>
-      <slot></slot>
-    </div>
+<!--  <div class="item">-->
+<!--    <i>-->
+<!--      <slot name="icon"></slot>-->
+<!--    </i>-->
+<!--    <div class="details">-->
+<!--      <h3>-->
+<!--        <slot name="heading"></slot>-->
+<!--      </h3>-->
+<!--      <slot></slot>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+  <div id="login">
+    1
   </div>
 </template>
 
 <style scoped>
+
+#login {
+  width: 90vw;
+  height: 90vh;
+  background: yellow;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
 .item {
   margin-top: 2rem;
   display: flex;
