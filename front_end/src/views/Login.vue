@@ -27,7 +27,7 @@ const login = () => {
     msg_error("请输入账号和密码")
   }else if(account.value=='admin'&&password.value=='123456'){
 
-    location.replace("https://www.cnu.edu.cn/");
+    location.replace("https://ys.mihoyo.com/");
   }else{
     msg_error("账号或密码错误！")
   }
