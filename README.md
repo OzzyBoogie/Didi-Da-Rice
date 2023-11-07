@@ -46,7 +46,7 @@ curl -d''-X POST http://127.0.0.1:5000/api/post
 ![Alt text](Documents/images/image-2.png)
 
 ## 运行前端 
-### s
+
 在开发阶段运行
 ```sh
 # Compile and Hot-Reload for Development
