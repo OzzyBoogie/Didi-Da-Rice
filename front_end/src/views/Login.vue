@@ -1,34 +1,34 @@
 <template>
   <div id="login">
-      <div id="account" class="input_div">
-        <input class="inputs" v-model="account" @keydown.enter="login" placeholder="Please input" size="large"/>
-      </div>
-      <div id="password" class="input_div">
-        <input class="inputs" v-model="password" @keydown.enter="login" placeholder="Please input" size="large"/>
-      </div>
-      <div class="input_div" style="padding-top: 40px" @click="login">
-        <button id="button">
-          登录
-        </button>
-      </div>
+    <div id="account" class="input_div">
+      <input class="inputs" v-model="account" @keydown.enter="login" placeholder="Please input" size="large" />
+    </div>
+    <div id="password" class="input_div">
+      <input class="inputs" v-model="password" @keydown.enter="login" placeholder="Please input" size="large" />
+    </div>
+    <div class="input_div" style="padding-top: 40px" @click="login">
+      <button id="button">
+        登录
+      </button>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import {ref} from 'vue'
-import {ElMessage} from "element-plus";
+import { ref } from 'vue'
+import { ElMessage } from "element-plus";
 
 const account = ref('admin')
 const password = ref('123456')
 
 const login = () => {
   console.log(account)
-  if (account.value==''||password.value==''){
+  if (account.value == '' || password.value == '') {
     msg_error("请输入账号和密码")
-  }else if(account.value=='admin'&&password.value=='123456'){
+  } else if (account.value == 'admin' && password.value == '123456') {
 
     location.replace("https://ys.mihoyo.com/");
-  }else{
+  } else {
     msg_error("账号或密码错误！")
   }
 
@@ -97,8 +97,8 @@ const msg_error = (msg) => {
   border: 0;
   border-radius: 20px;
 }
-#button:hover{
+
+#button:hover {
   cursor: pointer;
 }
-
 </style>
