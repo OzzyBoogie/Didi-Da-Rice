@@ -17,21 +17,31 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { ElMessage } from "element-plus";
+import { url } from '../settings.js';
+import axios from 'axios';
+import { formToJSON } from 'axios';
 
 const account = ref('admin')
 const password = ref('123456')
 
+
+
 const login = () => {
-  console.log(account)
   if (account.value == '' || password.value == '') {
     msg_error("请输入账号和密码")
-  } else if (account.value == 'admin' && password.value == '123456') {
-
-    location.replace("https://ys.mihoyo.com/");
   } else {
-    msg_error("账号或密码错误！")
+    const data = new FormData()
+    data.append('account', account.value)
+    data.append('password', password.value)
+    console.log(data);
+    axios.post(url + '/login', data).then(function (response) {
+      if (response.data['code'] == 1){
+        location.replace("https://ys.mihoyo.com/");
+      }else{
+        msg_error("账号或密码错误！")
+      }
+    })
   }
-
 }
 const msg_error = (msg) => {
   ElMessage.error(msg)

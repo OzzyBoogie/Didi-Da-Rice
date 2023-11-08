@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -10,9 +10,17 @@ def hello_world():  # put application's code here
     return 'Hello World!'
 
 
-@app.route('/1')
-def hello():  # put application's code here
-    return 'Hello 1!'
+@app.route('/login', methods=['POST'])
+def login(): 
+    data=request.form
+    account = data.get('account')
+    password = data.get('password')
+    if account =='admin' and password=='123456':
+        return {
+            'message': 'Login OK',
+            'code': 1
+            }
+    return 'Fail'
 
 @app.route('/api/post', methods=['POST'])
 def handle_post_request():
