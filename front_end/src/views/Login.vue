@@ -35,8 +35,8 @@ const login = () => {
     data.append('password', password.value)
     console.log(data);
     axios.post(url + '/login', data).then(function (response) {
-      if (response.data['code'] == 1){
-        location.replace("https://ys.mihoyo.com/");
+      if (response.data['code'] == 0){
+        location.replace("https://rework.tools/product/dashboard");
       }else{
         msg_error("账号或密码错误！")
       }
