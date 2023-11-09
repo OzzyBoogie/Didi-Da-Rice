@@ -37,8 +37,10 @@ const login = () => {
     axios.post(url + '/login', data).then(function (response) {
       if (response.data['code'] == 0){
         location.replace("https://rework.tools/product/dashboard");
-      }else{
-        msg_error("账号或密码错误！")
+      }else if(response.data['code'] == -1){
+        msg_error("账号不存在！")
+      }else if(response.data['code'] == 1){
+        msg_error("密码错误！")
       }
     })
   }
