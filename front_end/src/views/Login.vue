@@ -1,15 +1,17 @@
 <template>
-  <div id="login">
-    <div id="account" class="input_div">
-      <input class="inputs" v-model="account" @keydown.enter="login" placeholder="Please input" size="large" />
-    </div>
-    <div id="password" class="input_div">
-      <input class="inputs" v-model="password" @keydown.enter="login" placeholder="Please input" size="large" />
-    </div>
-    <div class="input_div" style="padding-top: 40px" @click="login">
-      <button id="button">
-        登录
-      </button>
+  <div id="background">
+    <div id="login">
+      <div id="account" class="input_div">
+        <input class="inputs" v-model="account" @keydown.enter="login" placeholder="Please input" size="large" />
+      </div>
+      <div id="password" class="input_div">
+        <input class="inputs" v-model="password" @keydown.enter="login" placeholder="Please input" size="large" />
+      </div>
+      <div class="input_div" style="padding-top: 40px" @click="login">
+        <button id="button">
+          登录
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -35,11 +37,11 @@ const login = () => {
     data.append('password', password.value)
     console.log(data);
     axios.post(url + '/login', data).then(function (response) {
-      if (response.data['code'] == 0){
+      if (response.data['code'] == 0) {
         location.replace("https://rework.tools/product/dashboard");
-      }else if(response.data['code'] == -1){
+      } else if (response.data['code'] == -1) {
         msg_error("账号不存在！")
-      }else if(response.data['code'] == 1){
+      } else if (response.data['code'] == 1) {
         msg_error("密码错误！")
       }
     })
@@ -51,6 +53,13 @@ const msg_error = (msg) => {
 </script>
 
 <style scoped>
+#background {
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(151, 157, 167);
+}
+
 #login {
   width: 75vw;
   height: 35vh;
@@ -63,7 +72,6 @@ const msg_error = (msg) => {
   transform: translate(-50%, -50%);
   padding-top: 80px;
 }
-
 
 .inputs {
   width: 60%;

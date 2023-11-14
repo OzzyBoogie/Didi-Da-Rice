@@ -6,16 +6,16 @@ const routes = [
         redirect:'/login'
     },
     {
-        path: '/test',
-        component: () => import('../components/TheWelcome.vue')
-    },
-    {
         path: '/login',
         component: () => import('../views/Login.vue')
     },
     {
         path: '/main',
-        component: () => import('../components/HelloWorld.vue')
+        component: () => import('../views/MainWindow.vue')
+    },
+    {
+        path: '/test',
+        component: () => import('../views/test.vue')
     }
 ]
 

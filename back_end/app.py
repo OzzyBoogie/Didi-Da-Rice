@@ -1,11 +1,12 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_mysqldb import MySQL
+import entity
 
-from collections import namedtuple
+# from collections import namedtuple
 
-# 定义命名元组的结构(用户账号数据库)
-User = namedtuple('User', ['id', 'username', 'password', 'fullname', 'phone'])
+# # 定义命名元组的结构(用户账号数据库)
+# User = namedtuple('User', ['id', 'username', 'password', 'fullname', 'phone'])
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -41,7 +42,7 @@ def login():
             'message': 'User not found',
             'code': -1
             }
-    user = User(*user_data)  # 使用命名元组来表示用户对象
+    user = entity.User(*user_data)  # 使用命名元组来表示用户对象
 
     stored_password = user.password
     # 这里需要使用适当的密码验证方法，例如哈希算法
