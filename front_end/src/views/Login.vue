@@ -2,10 +2,10 @@
   <div id="background">
     <div id="login">
       <div id="account" class="input_div">
-        <input class="inputs" v-model="account" @keydown.enter="login" placeholder="Please input" size="large" />
+        <input class="inputs" v-model="account" @keydown.enter="login" placeholder="Please input"/>
       </div>
       <div id="password" class="input_div">
-        <input class="inputs" v-model="password" @keydown.enter="login" placeholder="Please input" size="large" />
+        <input class="inputs" v-model="password" @keydown.enter="login" placeholder="Please input" />
       </div>
       <div class="input_div" style="padding-top: 40px" @click="login">
         <button id="button">
@@ -21,10 +21,10 @@ import { ref } from 'vue'
 import { ElMessage } from "element-plus";
 import { url } from '../settings.js';
 import axios from 'axios';
-import { formToJSON } from 'axios';
+import router from '../router/index'
 
-const account = ref('admin')
-const password = ref('123456')
+const account = ref('user1')
+const password = ref('password1')
 
 
 
@@ -35,10 +35,9 @@ const login = () => {
     const data = new FormData()
     data.append('account', account.value)
     data.append('password', password.value)
-    console.log(data);
     axios.post(url + '/login', data).then(function (response) {
       if (response.data['code'] == 0) {
-        location.replace("https://rework.tools/product/dashboard");
+        router.push('/main')
       } else if (response.data['code'] == -1) {
         msg_error("账号不存在！")
       } else if (response.data['code'] == 1) {

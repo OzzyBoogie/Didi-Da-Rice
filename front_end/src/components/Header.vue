@@ -1,6 +1,6 @@
 <template>
     <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false" @select="handleSelect">
-        <el-switch v-model="value1" size="large" class="ml-2 vertical-center" inline-prompt
+        <el-switch v-model="value1" @click="$emit('changeMode')" size="large" class="ml-2 vertical-center" inline-prompt
             style="--el-switch-on-color: #13ce66; --el-switch-off-color: #409EFF; margin-left: 5px;" active-text="接单" inactive-text="下单" />
         <div class="center">
             <span>滴滴打饭</span>

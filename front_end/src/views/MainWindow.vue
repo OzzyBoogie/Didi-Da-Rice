@@ -1,18 +1,27 @@
-<script setup>
-import Header from '../components/Header.vue';
-import MainPost from '../components/MainPost.vue';
-</script>
 <template>
     <div class="common-layout">
         <el-container>
             <el-header>
-                <Header>|</Header>
+                <Header @changeMode="changeMode">|</Header>
             </el-header>
             <el-main>
-                <MainPost></MainPost>
+                <SendTask v-if="mode"></SendTask>
+                <AcceptTask v-else></AcceptTask>
             </el-main>
         </el-container>
     </div>
 </template>
-  
+
+<script setup>
+import { ref } from 'vue';
+import Header from '../components/Header.vue';
+import SendTask from '../components/SendTask.vue';
+import AcceptTask from '../components/AcceptTask.vue'
+
+const mode=ref(1)
+
+function changeMode(){
+    mode.value=!mode.value
+}
+</script>
 <style scoped></style>
