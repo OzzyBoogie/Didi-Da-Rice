@@ -10,7 +10,6 @@
             </el-main>
         </el-container>
     </div>
-    <ConfirmDialog v-model="activeDialog" :form="form" @cancelDialog="cancelDialog"></ConfirmDialog>
 </template>
 
 <script setup>
