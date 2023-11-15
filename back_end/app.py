@@ -37,7 +37,7 @@ def login():
     user_data = cur.fetchone()
     
     if user_data is None:
-        print(-1)
+        # print(-1)
         return {
             'message': 'User not found',
             'code': -1
@@ -47,14 +47,14 @@ def login():
     stored_password = user.password
     # 这里需要使用适当的密码验证方法，例如哈希算法
     if password != stored_password:
-        print(1)
+        # print(1)
         return {
             'message': 'Invalid password',
             'code': 1
             }
     
     # 登录成功，进行后续操作
-    print(0)
+    # print(0)
     return {
             'message': 'Login successful',
             'code': 0
