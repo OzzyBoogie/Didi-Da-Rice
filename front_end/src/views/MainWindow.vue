@@ -2,7 +2,7 @@
     <div class="common-layout">
         <el-container>
             <el-header>
-                <Header @changeMode="changeMode">|</Header>
+                <Header @changeMode="changeMode1">|</Header>
             </el-header>
             <el-main>
                 <SendTask v-if="mode"></SendTask>
@@ -20,7 +20,7 @@ import AcceptTask from '../components/AcceptTask.vue'
 
 const mode=ref(1)
 
-function changeMode(){
+function changeMode1(){
     mode.value=!mode.value
 }
 </script>

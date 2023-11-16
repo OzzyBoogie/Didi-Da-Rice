@@ -26,10 +26,8 @@
     </el-dialog>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue'
-
 const props = defineProps(['form'])
-
+defineEmits(["cancelDialog"])
 </script>
 <style scoped>
 .dialog-footer button:first-child {
