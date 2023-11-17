@@ -1,7 +1,7 @@
-<template>
-    <el-drawer style="border-radius: 15px 0 0 15px;" :show-close="false" :with-header="false">
+<template> 
+    <el-drawer style="border-radius: 15px 0 0 15px;" :size="300" :show-close="false" :with-header="false">
         <div>
-            <el-avatar class="avatar" :size="150" :src="info.avatar" />
+            <el-avatar class="avatar" :size="200" :src="info.avatar" />
             <h3 class="username">{{ info.name }}</h3>
         </div>
         <el-descriptions class="body" :column="1" direction="vertical">
@@ -28,8 +28,10 @@ const info = ref(store)
   
 <style scoped>
 .avatar {
+    width: 120px;
+    height: 120px;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
     align-items: center;

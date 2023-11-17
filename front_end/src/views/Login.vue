@@ -96,14 +96,16 @@ const msg_error = (msg) => {
 }
 
 #account::before {
+  font-family: 'source';
   content: "账号：";
-  font-size: 28px;
+  font-size: 25px;
   color: #f2f2f2;
 }
 
 #password::before {
+  font-family: 'source';
   content: "密码：";
-  font-size: 28px;
+  font-size: 25px;
   color: #f2f2f2;
 }
 

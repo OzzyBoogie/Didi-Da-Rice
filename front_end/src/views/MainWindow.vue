@@ -24,4 +24,8 @@ function changeMode1(){
     mode.value=!mode.value
 }
 </script>
-<style scoped></style>
+<style scoped>
+.common-layout{
+    font-family: 'Hiragino Sans GB';
+}
+</style>

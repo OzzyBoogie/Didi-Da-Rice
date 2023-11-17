@@ -1,10 +1,13 @@
 <template>
-    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false">
-        <el-switch v-model="showSwitch" @click="$emit('changeMode')" size="large" class="ml-2 vertical-center" inline-prompt
-            style="--el-switch-on-color: #13ce66; --el-switch-off-color: #409EFF; margin-left: 5px;" active-text="接单"
+    <el-menu :default-active="activeIndex" class="header" mode="horizontal" :ellipsis="false">
+        <el-switch v-model="showSwitch" @click="$emit('changeMode')" size="large" class="switch vertical-center" inline-prompt
+            style="--el-switch-on-color: #13ce66; --el-switch-off-color: #409EFF; margin-left: 15px;" active-text="接单"
             inactive-text="下单" />
         <div class="center">
-            <span>滴滴打饭</span>
+            <div>
+
+                <img class="logo" src="../assets/pics/header.jpg">
+            </div>
         </div>
         <div class="flex-grow" />
         <div class="vertical-center">
@@ -33,6 +36,10 @@ function showDrawer() {
 </script>
   
 <style>
+.header {
+    height: 80px;
+}
+
 .flex-grow {
     flex-grow: 1;
 }
@@ -48,11 +55,23 @@ function showDrawer() {
     margin: auto 0 auto 0;
 }
 
+.logo {
+    width: 270px;
+    height: 80px;
+    transform: scale(0.8);
+}
+
 .example-showcase .el-dropdown-link {
     cursor: pointer;
     color: var(--el-color-primary);
     display: flex;
     align-items: center;
+}
+
+.avatar{
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
 }
 
 .avatar:hover {

@@ -23,26 +23,26 @@
           </el-form-item>
           <el-form-item label="送达时间" v-if="!ruleForm.delivery" prop="date1">
               <el-col :span="8">
-                  <el-date-picker v-model="ruleForm.date1" type="date" placeholder="Pick a date" style="width: 100%"
+                  <el-date-picker v-model="ruleForm.date1" type="date" placeholder="选择日期" style="width: 100%"
                       value-format="YYYY-MM-DD" />
               </el-col>
               <el-col :span="1" class="text-center">
               </el-col>
               <el-col :span="8">
                   <el-time-select v-model="ruleForm.date2" start="00:00" step="00:15" end="23:30"
-                      placeholder="Select time" value-format="HH:MM" prop="date2" />
+                      placeholder="选择时间" value-format="HH:MM" prop="date2" />
               </el-col>
           </el-form-item>
           <el-form-item label="送达时间" v-else>
               <el-col :span="8">
-                  <el-date-picker v-model="ruleForm.date1" type="date" placeholder="Pick a date" style="width: 100%"
+                  <el-date-picker v-model="ruleForm.date1" type="date" placeholder="选择日期" style="width: 100%"
                       value-format="YYYY-MM-DD" disabled />
               </el-col>
               <el-col :span="1" class="text-center">
               </el-col>
               <el-col :span="8">
                   <el-time-select v-model="ruleForm.date2" start="00:00" step="00:15" end="23:30"
-                      placeholder="Select time" disabled />
+                      placeholder="选择时间" disabled />
               </el-col>
           </el-form-item>
           <el-form-item label="备注">
