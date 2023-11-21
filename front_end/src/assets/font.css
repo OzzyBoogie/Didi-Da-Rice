@@ -2,3 +2,7 @@
     font-family: 'source';
     src: url('../assets/fonts/SourceHanSansCN-Light.otf') format('opentype');
 }
+@font-face {
+    font-family: 'smiley';
+    src: url('../assets/fonts/SmileySans-Oblique.otf.woff2') format('woff2');
+}

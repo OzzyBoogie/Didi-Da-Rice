@@ -1,7 +1,8 @@
-from flask import Flask, jsonify, request
+from flask import Flask, request
 from flask_cors import CORS
 from flask_mysqldb import MySQL
 import entity
+import time
 
 # from collections import namedtuple
 
@@ -21,27 +22,28 @@ app.config["MYSQL_DB"] = "DIDI-DA-RICE-USER-DB"
 
 mysql = MySQL(app)
 
+
 @app.route('/')
 def hello_world():  # put application's code here
     return 'Hello World!'
 
 
 @app.route('/login', methods=['POST'])
-def login(): 
+def login():
     data = request.form
     account = data.get('account')
     password = data.get('password')
-    
+
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM users WHERE username = %s", (account,))
     user_data = cur.fetchone()
-    
+
     if user_data is None:
         # print(-1)
         return {
             'message': 'User not found',
             'code': -1
-            }
+        }
     user = entity.User(*user_data)  # 使用命名元组来表示用户对象
 
     stored_password = user.password
@@ -51,15 +53,30 @@ def login():
         return {
             'message': 'Invalid password',
             'code': 1
-            }
-    
+        }
+
     # 登录成功，进行后续操作
     # print(0)
     return {
-            'message': 'Login successful',
-            'code': 0
-            }
+        'message': 'Login successful',
+        'code': 0
+    }
 
+@app.route('/update_info',methods=['POST'])
+def update_info():
+    time.sleep(2)
+    response ={
+        'code': 400
+    }
+    return response
+
+@app.route('/update_avatar',methods=['POST'])
+def update_avatar():
+    time.sleep(2)
+    response ={
+        'code': 200
+    }
+    return response
 
 @app.route('/api/post', methods=['POST'])
 def handle_post_request():
@@ -67,6 +84,7 @@ def handle_post_request():
     # 处理数据...
     response = {'message': 'Success'}
     return response, 200  # 返回JSON响应和状态码
+
 
 if __name__ == '__main__':
     app.run(

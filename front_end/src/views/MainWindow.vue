@@ -13,19 +13,23 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import {ref} from 'vue';
 import Header from '../components/Header.vue';
 import SendTask from '../components/SendTask.vue';
 import AcceptTask from '../components/AcceptTask.vue'
 
-const mode=ref(1)
+const mode = ref(1)
 
-function changeMode1(){
-    mode.value=!mode.value
+function changeMode1() {
+    mode.value = !mode.value
 }
+
+//let customStyle = document.createElement("style");
+//customStyle.innerHTML = '.el-message__content{font-family: "source"}';
+//document.body.appendChild(customStyle);
 </script>
 <style scoped>
-.common-layout{
-    font-family: 'Hiragino Sans GB';
+.common-layout {
+    font-family: source, serif;
 }
 </style>

@@ -19,7 +19,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { ElMessage } from "element-plus";
-import { url } from '../settings.js';
+import { url } from '@/settings';
 import axios from 'axios';
 import router from '../router/index'
 
