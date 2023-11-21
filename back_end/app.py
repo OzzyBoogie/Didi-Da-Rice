@@ -62,21 +62,33 @@ def login():
         'code': 0
     }
 
-@app.route('/update_info',methods=['POST'])
+
+@app.route('/update_info', methods=['POST'])
 def update_info():
     time.sleep(2)
-    response ={
+    response = {
         'code': 400
     }
     return response
 
-@app.route('/update_avatar',methods=['POST'])
+
+@app.route('/update_avatar', methods=['POST'])
 def update_avatar():
     time.sleep(2)
-    response ={
-        'code': 200
+    response = {
+        'code': 400
     }
     return response
+
+
+@app.route('/emit_order', methods=['POST'])
+def emit_order():
+    response = {
+        'code': 400,
+        'message': 'Success'
+    }
+    return response
+
 
 @app.route('/api/post', methods=['POST'])
 def handle_post_request():

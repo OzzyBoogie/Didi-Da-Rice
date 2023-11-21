@@ -1,5 +1,5 @@
 <template>
-    <el-dialog align-center>
+    <el-dialog style="width: 500px" align-center>
         <div class="descriptions">
             <el-descriptions title="确认信息" :column=1 border>
                 <el-descriptions-item label="姓名">这是名字</el-descriptions-item>
@@ -17,7 +17,7 @@
         <div style="display: flex;">
             <div class="flex-grow" />
             <span class="dialog-footer">
-                <el-button type="primary" @click="">
+                <el-button type="primary" @click="$emit('emitOrder')">
                     Confirm
                 </el-button>
                 <el-button @click="$emit('cancelDialog')">Cancel</el-button>
@@ -27,7 +27,7 @@
 </template>
 <script lang="ts" setup>
 const props = defineProps(['form'])
-defineEmits(["cancelDialog"])
+defineEmits(["cancelDialog","emitOrder"])
 </script>
 <style scoped>
 .dialog-footer button:first-child {

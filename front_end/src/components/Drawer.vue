@@ -70,10 +70,9 @@
 import {ref} from 'vue'
 import {store} from '@/store/store'
 import {Edit} from '@element-plus/icons-vue';
-import {ElMessage} from "element-plus";
 import axios from "axios";
 import {url} from '@/settings';
-
+import {showMessage} from '@/components/js/ShowMessage'
 
 const info = ref(store)
 
@@ -82,14 +81,6 @@ const innerDrawer = ref(false)
 const input_name = ref(store.name)
 const input_phone = ref(store.phone)
 const submit_disabled = ref(true)
-
-function showMessage(str, type) {
-    ElMessage({
-        message: str,
-        type: type,
-    })
-}
-
 function showInnerDrawer() {
     innerDrawer.value = true
 }
@@ -129,10 +120,7 @@ function cancelForm() {
 function beforeUploadAvatar() {
     axios.post(url + '/update_info').then(function (response) {
         if (response.data['code'] == 400) {
-            ElMessage({
-                message: '修改失败! (失败原因：淫秽色情)',
-                type: 'error',
-            })
+            showMessage('修改失败! (失败原因：淫秽色情)', 'error')
         }
     })
     return false
