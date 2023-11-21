@@ -2,7 +2,7 @@
   <div id="container">
       <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" :size="'large'" class="demo-ruleForm"
                label-width="120px" status-icon>
-          <el-form-item label="aa校区" prop="area">
+          <el-form-item label="校区" prop="area">
               <el-select v-model="ruleForm.area" placeholder="选择校区">
                   <el-option label="校本部" value="校本部" />
                   <el-option label="北一区" value="北一区" />
