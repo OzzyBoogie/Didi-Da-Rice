@@ -23,6 +23,7 @@ import { url } from '@/settings';
 import axios from 'axios';
 import router from '../router/index'
 import {store} from '@/store/store'
+import {setCookies} from '@/store/cookie'
 
 const account = ref('user1')
 const password = ref('password1')
@@ -43,6 +44,7 @@ const login = () => {
         store.account=info['account']
         store.username=info['username']
         store.phone=info['phone']
+        setCookies()
         router.push('/main')
       } else if (response.data['code'] == -1) {
         msg_error("账号不存在！")

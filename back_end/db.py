@@ -1,9 +1,10 @@
 import pymysql
 
 config_root = {'user': 'root',
-               'password': '',
+               'password': 'Aa123456!!!',
                'port': 3306,
-               'host': '8.217.6.156',
+               # 'host': '8.217.6.156',
+               'host': 'localhost',
                'db': 'DIDI-DA-RICE-USER-DB'}
 
 

@@ -20,10 +20,8 @@ def login():
     data = request.form
     account = data.get('account')
     password = data.get('password')
-
-    sql = "SELECT * FROM users WHERE username = '%s'" % account
+    sql = "SELECT * FROM users WHERE user_name = '%s'" % account
     user_data = mysql.fetch_one_db(sql)
-    print(user_data)
 
     if user_data is None:
         return {

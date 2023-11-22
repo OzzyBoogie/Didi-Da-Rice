@@ -16,7 +16,7 @@
                     <el-avatar class="avatar" :size="200" :src="info.avatar"/>
                 </el-tooltip>
             </el-upload>
-            <h3 class="title">{{ info.username }}</h3>
+            <h3 class="title">{{ info.fullname }}</h3>
         </div>
         <el-descriptions class="body-outer" :column="1" direction="vertical">
             <el-descriptions-item label="电话号码" align="center">{{ info.phone }}</el-descriptions-item>
@@ -67,19 +67,20 @@
 </template>
 
 <script lang="ts" setup>
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
 import {store} from '@/store/store'
 import {Edit} from '@element-plus/icons-vue';
 import axios from "axios";
 import {url} from '@/settings';
+import {getCookies} from "@/store/cookie"
 import {showMessage} from '@/components/js/ShowMessage'
 
 const info = ref(store)
 
 const loading = ref(false)
 const innerDrawer = ref(false)
-const input_name = ref(store.username)
-const input_phone = ref(store.phone)
+const input_name = ref('')
+const input_phone = ref('')
 const submit_disabled = ref(true)
 function showInnerDrawer() {
     innerDrawer.value = true
@@ -125,6 +126,11 @@ function beforeUploadAvatar() {
     })
     return false
 }
+onMounted(() => {
+    getCookies()
+    input_name.value = store.username
+    input_phone.value = store.phone
+})
 </script>
 
 <style scoped>

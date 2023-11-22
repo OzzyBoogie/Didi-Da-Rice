@@ -13,16 +13,21 @@
 </template>
 
 <script setup>
-import {ref} from 'vue';
+import {onMounted, ref} from 'vue';
 import Header from '../components/Header.vue';
 import SendTask from '../components/SendTask.vue';
 import AcceptTask from '../components/AcceptTask.vue'
+import {getCookies} from "@/store/cookie";
 
 const mode = ref(1)
 
 function changeMode1() {
     mode.value = !mode.value
 }
+
+onMounted(() => {
+    getCookies()
+})
 </script>
 <style scoped>
 .common-layout {
