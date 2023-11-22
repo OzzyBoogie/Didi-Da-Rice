@@ -1,26 +1,13 @@
 from flask import Flask, request
 from flask_cors import CORS
-from flask_mysqldb import MySQL
+from db import Mysql
 import entity
 import time
-
-# from collections import namedtuple
-
-# # 定义命名元组的结构(用户账号数据库)
-# User = namedtuple('User', ['id', 'username', 'password', 'fullname', 'phone'])
 
 app = Flask(__name__)
 cors = CORS(app)
 
-# Required
-app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = ""
-app.config["MYSQL_DB"] = "DIDI-DA-RICE-USER-DB"
-# Extra configs, optional:
-# app.config["MYSQL_CURSORCLASS"] = "DictCursor"
-# app.config["MYSQL_CUSTOM_OPTIONS"] = {"ssl": {"ca": "/path/to/ca-file"}}  # https://mysqlclient.readthedocs.io/user_guide.html#functions-and-attributes
-
-mysql = MySQL(app)
+mysql = Mysql()
 
 
 @app.route('/')
@@ -34,12 +21,11 @@ def login():
     account = data.get('account')
     password = data.get('password')
 
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM users WHERE username = %s", (account,))
-    user_data = cur.fetchone()
+    sql = "SELECT * FROM users WHERE username = '%s'" % account
+    user_data = mysql.fetch_one_db(sql)
+    print(user_data)
 
     if user_data is None:
-        # print(-1)
         return {
             'message': 'User not found',
             'code': -1
@@ -49,16 +35,18 @@ def login():
     stored_password = user.password
     # 这里需要使用适当的密码验证方法，例如哈希算法
     if password != stored_password:
-        # print(1)
         return {
             'message': 'Invalid password',
             'code': 1
         }
 
     # 登录成功，进行后续操作
-    # print(0)
     return {
         'message': 'Login successful',
+        'account': user_data[0],
+        'username': user_data[1],
+        'fullname': user_data[3],
+        'phone': user_data[4],
         'code': 0
     }
 

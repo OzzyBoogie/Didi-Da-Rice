@@ -16,7 +16,7 @@
                     <el-avatar class="avatar" :size="200" :src="info.avatar"/>
                 </el-tooltip>
             </el-upload>
-            <h3 class="title">{{ info.name }}</h3>
+            <h3 class="title">{{ info.username }}</h3>
         </div>
         <el-descriptions class="body-outer" :column="1" direction="vertical">
             <el-descriptions-item label="电话号码" align="center">{{ info.phone }}</el-descriptions-item>
@@ -78,7 +78,7 @@ const info = ref(store)
 
 const loading = ref(false)
 const innerDrawer = ref(false)
-const input_name = ref(store.name)
+const input_name = ref(store.username)
 const input_phone = ref(store.phone)
 const submit_disabled = ref(true)
 function showInnerDrawer() {
@@ -86,7 +86,7 @@ function showInnerDrawer() {
 }
 
 function isInfoChanged() {
-    return (input_name.value != store.name || input_phone.value != store.phone);   // 信息被修改则返回true
+    return (input_name.value != store.username || input_phone.value != store.phone);   // 信息被修改则返回true
 }
 
 function isSubmitDisabled() {
@@ -101,7 +101,7 @@ function submitInfo() {
     data.append('phone', input_phone.value)
     axios.post(url + '/update_info', data).then(function (response) {
         if (response.data['code'] == 200) {
-            store.name = input_name.value
+            store.username = input_name.value
             store.phone = input_phone.value
             showMessage('修改成功！', 'success')
             loading.value = false

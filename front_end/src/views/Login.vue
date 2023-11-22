@@ -22,6 +22,7 @@ import { ElMessage } from "element-plus";
 import { url } from '@/settings';
 import axios from 'axios';
 import router from '../router/index'
+import {store} from '@/store/store'
 
 const account = ref('user1')
 const password = ref('password1')
@@ -36,7 +37,12 @@ const login = () => {
     data.append('account', account.value)
     data.append('password', password.value)
     axios.post(url + '/login', data).then(function (response) {
-      if (response.data['code'] == 0) {
+      const info=response.data;
+      if (info['code'] == 0) {
+        store.fullname=info['fullname']
+        store.account=info['account']
+        store.username=info['username']
+        store.phone=info['phone']
         router.push('/main')
       } else if (response.data['code'] == -1) {
         msg_error("账号不存在！")
@@ -96,14 +102,12 @@ const msg_error = (msg) => {
 }
 
 #account::before {
-  font-family: 'source';
   content: "账号：";
   font-size: 25px;
   color: #f2f2f2;
 }
 
 #password::before {
-  font-family: 'source';
   content: "密码：";
   font-size: 25px;
   color: #f2f2f2;

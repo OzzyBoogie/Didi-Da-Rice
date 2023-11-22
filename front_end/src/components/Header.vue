@@ -8,7 +8,7 @@
         <div class="center">
             <div>
 
-                <img class="logo" src="../assets/pics/header.jpg">
+                <img class="logo" src="../assets/pics/header.jpg" alt="">
             </div>
         </div>
         <div class="flex-grow"/>
@@ -23,8 +23,6 @@
 <script lang="ts" setup>
 import {ref} from 'vue'
 import Drawer from './Drawer.vue';
-import {UserFilled} from '@element-plus/icons-vue'
-import {store} from '../store/store'
 
 defineEmits(["changeMode"])
 

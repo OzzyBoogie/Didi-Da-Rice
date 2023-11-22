@@ -23,10 +23,6 @@ const mode = ref(1)
 function changeMode1() {
     mode.value = !mode.value
 }
-
-//let customStyle = document.createElement("style");
-//customStyle.innerHTML = '.el-message__content{font-family: "source"}';
-//document.body.appendChild(customStyle);
 </script>
 <style scoped>
 .common-layout {
