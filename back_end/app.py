@@ -51,12 +51,15 @@ def login():
 
 @app.route('/update_info', methods=['POST'])
 def update_info():
-    time.sleep(2)
-    response = {
-        'code': 400
-    }
-    return response
-
+    data = request.form
+    account = data.get('account')
+    name = data.get('name')
+    phone = data.get('phone')
+    sql = "UPDATE users SET user_name = '%s', phone_number = '%s' where id = %s" % (name, phone, account)
+    print(sql)
+    # sql = "SELECT * FROM users WHERE user_name = '%s'" % account
+    user_data = mysql.exe_db(sql)
+    return '1'
 
 @app.route('/update_avatar', methods=['POST'])
 def update_avatar():
